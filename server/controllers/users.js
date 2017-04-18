@@ -1,23 +1,47 @@
-var USERS = [
-    { name: "Jeff", password: "password0", email: "Bobo@bobob.boo" },
-    { name: "Bob", password: "password1", email: "Bobo@bobob.boo" },
-    { name: "Sam", password: "password2", email: "Bobo@bobob.boo" },
-]
+var mongoose = require("mongoose")
+
+var User = mongoose.model("User")
 
 module.exports = {
     get_all_users: function(req, res) {
-        res.json(USERS)
+        User.find({}, function(err, data) {
+            if (err) {
+                console.log("User find Error", err)
+                res.json(err)
+            } else {
+                res.json(data)
+            }
+        })
     },
     createUser: function(req, res) {
         console.log(req.body)
-        USERS.push(req.body)
-        res.json(true)
+        var newUser = new User(req.body)
+        newUser.save(function(err, data) {
+            if (err) {
+                console.log("rat create error", err)
+                res.json({ added: false, error: err })
+            } else {
+                res.json({ added: true })
+            }
+        })
 
     },
-    updateUser: function(req, res) {
+    // updateUser: function(req, res) {
+    //     UserModel.update({ $or: [{name: req.name}, {password: req.password}] }, { $set: { lastfm: req.params } }, { upsert: true }, function(){})
+    //     // User.findOne({_id: req.body.id}, function(err){
+    //     //     if (err) {
+    //     //         console.log("User find error")
+    //     //     }
+    //     })
 
-    },
+    // },
     deleteUser: function(req, res) {
+        User.remove({ _id: req.params.id }, function(err) {
+            if (err) {
+                console.log("User delete error")
+            }
+            res.json(true)
+        })
 
     }
 

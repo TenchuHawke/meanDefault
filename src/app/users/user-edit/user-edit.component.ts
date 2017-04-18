@@ -17,5 +17,10 @@ export class UserEditComponent implements OnInit {
     ngOnInit() {  
 
     }
-
+    deleteUser(id : string){
+        this._userService.deleteUser(id);
+    }
+    editUser(id){
+        console.log(id)
+    }
 }

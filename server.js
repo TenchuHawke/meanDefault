@@ -2,9 +2,13 @@ const express = require("express")
 const path = require("path")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
+    // const session = require("express-session")
 
-const app = express()
 const PORT = 8000
+    // let secret = 'ThisIsASecretKey' // string for encryption
+
+var app = express();
+// app.use(session({ secret: secret }));
 
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, "./dist")))

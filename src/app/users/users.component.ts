@@ -1,4 +1,6 @@
+import { UserService } from './user.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from "app/users/user";
 
 @Component({
   selector: 'app-users',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor() { }
+  userService : UserService
+  constructor(userService : UserService) {
+    this.userService = userService
+    userService.LoggedInUser = new User
+  }
 
   ngOnInit() {
+        this.userService.LoggedInUser._id='1adssad';
   }
 
 }

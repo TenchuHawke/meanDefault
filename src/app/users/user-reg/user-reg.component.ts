@@ -2,6 +2,7 @@ import { UserService } from './../user.service';
 import { User } from './../user';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-user-reg',
   templateUrl: './user-reg.component.html',
@@ -11,14 +12,15 @@ export class UserRegComponent implements OnInit {
 
   newUser : User
   constructor(private _userService : UserService) {
-    this.newUser = new User("","","Password")
+    this.newUser = new User()
   }
 
   ngOnInit() {
   }
 
   createUser(){
-    console.log("reg.ts createUser()")
-    this._userService.createUser(this.newUser);
+    var loggedInUser = this._userService.createUser(this.newUser);
+    console.log("Logged in user: ")
+    this.newUser = new User
   }
 }

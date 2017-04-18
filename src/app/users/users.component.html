@@ -1,9 +1,8 @@
 <h3>Users</h3>
-<div>
+<div *ngIf="!userService.loggedInUser">
     <h4>Login</h4>
     <app-user-login></app-user-login>
-</div>
-<div>
+
     <h4>Registration</h4>
     <app-user-reg></app-user-reg>
 </div>
