@@ -1,0 +1,18 @@
+<h3>User List</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>password</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>ID</th>
+    </tr>
+    <tr *ngFor="let user of this._userService.USERS">
+        <td>{{user.name}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.email}}</td>
+        <td>Created at tk</td>
+        <td>UserId tk</td>
+    </tr>
+
+</table>

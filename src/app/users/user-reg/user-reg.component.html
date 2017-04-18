@@ -1,0 +1,9 @@
+<h3>New User Registration</h3>
+<form (submit)="createUser()">
+    <input type="text" name="name" placeholder="Name" [(ngModel)]="newUser.name">
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password" value="password">
+    <input type="email" name="email" [(ngModel)]="newUser.email" placeholder="E-mail">
+    <input type="submit" name="Create New User">
+</form>
+
+{{newUser | json}}
